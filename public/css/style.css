@@ -1,0 +1,14 @@
+body {
+    width: 1200px;
+    margin: auto;
+}
+a {
+    text-decoration: none;
+    color: #333;
+}
+nav {
+    margin: 50px 0;
+}
+nav a {
+    color: green;
+}
