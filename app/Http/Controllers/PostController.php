@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -36,5 +37,31 @@ class PostController extends Controller
             ->first();
 
         return view('detail', compact('post'));
+    }
+
+    //Sử dụng Eloquen ORM
+    public function test()
+    {
+        //Lấy toàn bộ dữ liệu
+        $posts = Post::all();
+        //Sắp xếp
+        $posts = Post::query()
+            ->latest('id')
+            ->limit(10)
+            ->get();
+        //Điều kiện
+        $posts = Post::query()
+            ->where('category_id', 1)
+            ->get();
+
+        return $posts;
+    }
+
+    public function index()
+    {
+        //Sử dụng phân trang
+        $posts = Post::query()->paginate(8);
+
+        return view('home', compact('posts'));
     }
 }

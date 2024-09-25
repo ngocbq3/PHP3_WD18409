@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\DB;
@@ -92,3 +93,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PostController::class, 'home'])->name('page.home');
 Route::get('/category/{id}', [PostController::class, 'list'])->name('page.list');
 Route::get('/post/{id}', [PostController::class, 'detail'])->name('page.detail');
+
+Route::get('/test', [PostController::class, 'test']);
+
+Route::get('/home', [PostController::class, 'index']);
+
+//Admin
+Route::prefix('admin')->group(function () {
+    Route::get('posts', [AdminPostController::class, 'index'])->name('admin.posts.index');
+});
