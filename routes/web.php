@@ -101,4 +101,14 @@ Route::get('/home', [PostController::class, 'index']);
 //Admin
 Route::prefix('admin')->group(function () {
     Route::get('posts', [AdminPostController::class, 'index'])->name('admin.posts.index');
+
+    Route::get('/posts/create', [AdminPostController::class, 'create'])->name('admin.posts.create');
+
+    Route::post('/posts/create', [AdminPostController::class, 'store'])->name('admin.posts.store');
+
+    Route::get('/posts/edit/{id}', [AdminPostController::class, 'edit'])->name('admin.posts.edit');
+
+    Route::put('/posts/edit/{id}', [AdminPostController::class, 'update'])->name('admin.posts.update');
+
+    Route::delete('/posts/delete/{id}', [AdminPostController::class, 'destroy'])->name('admin.posts.destroy');
 });

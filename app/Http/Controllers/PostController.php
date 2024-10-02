@@ -13,8 +13,7 @@ class PostController extends Controller
         //Hiển thị 8 bài viết mới nhất
         $posts = DB::table('posts')
             ->orderByDesc('id')
-            ->limit(8)
-            ->get();
+            ->paginate(8);
 
         //Hiển thị ra view
         return view('home', compact('posts'));
