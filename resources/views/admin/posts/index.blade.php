@@ -5,6 +5,11 @@
 @section('content')
 
     <div class="m-5">
+        @if (session('message'))
+            <div class="alert bg-primary text-white">
+                {{ session('message') }}
+            </div>
+        @endif
         <table class="table">
             <thead>
                 <tr>
@@ -24,7 +29,7 @@
                         <td>{{ $post->id }}</td>
                         <td>{{ $post->title }}</td>
                         <td>
-                            <img src="{{ asset('storage') . '/' . $post->image }}" width="60" alt="">
+                            <img src="{{ Storage::url($post->image) }}" width="60" alt="">
                         </td>
                         <td>{{ $post->description }}</td>
                         <td>{{ $post->category->name }}</td>
