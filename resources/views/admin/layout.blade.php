@@ -14,6 +14,14 @@
     <div class="container">
         <nav>
             Menu
+
+            <!--Thông tin user-->
+            @if (Auth::check())
+                <div>
+                    <b>{{ Auth::user()->email }}</b>
+                    <a href="{{ route('logout') }}">Logout</a>
+                </div>
+            @endif
         </nav>
 
         @yield('content')
